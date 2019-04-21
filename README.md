@@ -23,3 +23,17 @@ In supervised learning, every point in our data-set is complete. It describes ve
 Where as in unsupervised learning, there is no output, only inputs. And its the job of the algorithm to find patterns and structures in that data to group them automatically. An example is to look through a catalog of thousands of images and try to group those images into categories such that similar looking images are grouped together. We only have input here, no proper definition of output is input to the algorithm. The algorithm itself tries to look for patterns for classification.
 
 
+# Squared Error Function
+
+For "continuous curve" problems, the simplest model is to draw a line such that it is as close to all the points as possible.
+Mathematically, a line in 2D plane is expressed as:
+
+h(x) = C<sub>0</sub> + C<sub>1</sub>x
+
+So if the known set of values consists of data like [{x<sub>0</sub>, y<sub>0</sub>}, {x<sub>1</sub>, y<sub>1</sub>}...  {x<sub>i</sub>, y<sub>i</sub>}... {x<sub>m</sub>, y<sub>m</sub>}], then the **cost function** is defined as:
+
+c = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+
+And the line is considered a best fit when C<sub>0</sub> and C<sub>1</sub> are chosen to provide a minimum value for the above cost function.
+
+
