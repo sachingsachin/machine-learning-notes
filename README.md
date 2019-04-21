@@ -37,3 +37,14 @@ c = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
 And the line is considered a best fit when C<sub>0</sub> and C<sub>1</sub> are chosen to provide a minimum value for the above cost function.
 
 
+# Contour plots for simplest error function
+  
+The squared error function `c` is a function of C<sub>0</sub> and C<sub>1</sub>.
+Since there are three variables here, `c`, C<sub>0</sub> and C<sub>1</sub>, they are best shown in a 3D graph and then one can select the global minima in that 3D graph to find those C<sub>0</sub> and C<sub>1</sub> for which `c` is the minimum.
+
+A 2D alternative to 3D graph is the [Contour line](https://en.wikipedia.org/wiki/Contour_line). Any contour line on a contour plot is the line joining those set of {C<sub>0</sub>, C<sub>1</sub>} points for which `c` has the same value.  
+It can also be thought of as the projection of the 3D graph on a 2D surface.
+
+Naturally, set of C<sub>0</sub> and C<sub>1</sub> for which `c` has large values will be quite high and so contour lines for those will form pretty big circles. And conversely, the set of C<sub>0</sub> and C<sub>1</sub> for which `c` has low values will be quite low and so contour lines for those will be smaller circles.
+
+So it is easy to postulate that the best curve-fitting line is obtained by those C<sub>0</sub> and C<sub>1</sub> for which the contour line forms the smallest circle.
