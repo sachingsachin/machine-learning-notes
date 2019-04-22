@@ -32,19 +32,36 @@ h(x) = C<sub>0</sub> + C<sub>1</sub>x
 
 So if the known set of values consists of data like [{x<sub>0</sub>, y<sub>0</sub>}, {x<sub>1</sub>, y<sub>1</sub>}...  {x<sub>i</sub>, y<sub>i</sub>}... {x<sub>m</sub>, y<sub>m</sub>}], then the **cost function** is defined as:
 
-c = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+J = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
 
 And the line is considered a best fit when C<sub>0</sub> and C<sub>1</sub> are chosen to provide a minimum value for the above cost function.
 
 
 # Contour plots for simplest error function
   
-The squared error function `c` is a function of C<sub>0</sub> and C<sub>1</sub>.
-Since there are three variables here, `c`, C<sub>0</sub> and C<sub>1</sub>, they are best shown in a 3D graph and then one can select the global minima in that 3D graph to find those C<sub>0</sub> and C<sub>1</sub> for which `c` is the minimum.
+The squared error function `J` is a function of C<sub>0</sub> and C<sub>1</sub>.
+Since there are three variables here, `J`, C<sub>0</sub> and C<sub>1</sub>, they are best shown in a 3D graph and then one can select the global minima in that 3D graph to find those C<sub>0</sub> and C<sub>1</sub> for which `J` is the minimum.
 
-A 2D alternative to 3D graph is the [Contour line](https://en.wikipedia.org/wiki/Contour_line). Any contour line on a contour plot is the line joining those set of {C<sub>0</sub>, C<sub>1</sub>} points for which `c` has the same value.  
+A 2D alternative to 3D graph is the [Contour line](https://en.wikipedia.org/wiki/Contour_line). Any contour line on a contour plot is the line joining those set of {C<sub>0</sub>, C<sub>1</sub>} points for which `J` has the same value.  
 It can also be thought of as the projection of the 3D graph on a 2D surface.
 
-Naturally, set of C<sub>0</sub> and C<sub>1</sub> for which `c` has large values will be quite high and so contour lines for those will form pretty big circles. And conversely, the set of C<sub>0</sub> and C<sub>1</sub> for which `c` has low values will be quite low and so contour lines for those will be smaller circles.
+Naturally, set of C<sub>0</sub> and C<sub>1</sub> for which `J` has large values will be quite high and so contour lines for those will form pretty big circles. And conversely, the set of C<sub>0</sub> and C<sub>1</sub> for which `J` has low values will be quite low and so contour lines for those will be smaller circles.
 
 So it is easy to postulate that the best curve-fitting line is obtained by those C<sub>0</sub> and C<sub>1</sub> for which the contour line forms the smallest circle.
+
+
+
+# Nature of cost function `J`
+
+As can be seen above, `J` is a function of C<sub>0</sub> and C<sub>1</sub>.  
+Technically it is also a function of y<sub>i</sub> and M etc kind of variables but those will not change once a problem is specified.
+So for a specific problem, `J` is a function of C<sub>0</sub> and C<sub>1</sub> and the goal of machine learning algorithm is to find C<sub>0</sub> and C<sub>1</sub> such that `J` is minimized.
+
+To understand how to find such C<sub>0</sub> and C<sub>1</sub>, let us consider for a moment that C<sub>0</sub> is 0 and does not change.
+Thus, our cost function `J` is now just a function of C<sub>1</sub>. Graphically, this gives us a line passing through 0,0 and whose slope C<sub>1</sub> needs to be found such that its distance from all the given points {x<sub>i</sub>, y<sub>i</sub>} is minimum (i.e. the squared error function has the least value). Obviously, there will be just one such slope C<sub>1</sub> (proof not provided here but it is pretty intuitive). So if we plot the graph of J as a function of C<sub>1</sub>, it will be a U-shaped curve like this:
+
+![J as a function of C1](docs/ml-1.png)
+
+When J is a function of both C<sub>0</sub> and C<sub>1</sub>, the situation is similar, just that the same U-shaped curve exists in two dimensions and looks somewhat similar to:
+
+![J as a function of C0 and C1](docs/ml-2.png)
