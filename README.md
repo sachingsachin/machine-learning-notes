@@ -57,7 +57,7 @@ As can be seen above, `J` is a function of C<sub>0</sub> and C<sub>1</sub>.
 Technically it is also a function of y<sub>i</sub> and M etc kind of variables but those will not change once a problem is specified.
 So for a specific problem, `J` is a function of C<sub>0</sub> and C<sub>1</sub> and the goal of machine learning algorithm is to find C<sub>0</sub> and C<sub>1</sub> such that `J` is minimized.
 
-To understand how to find such C<sub>0</sub> and C<sub>1</sub>, let us consider for a moment that C<sub>0</sub> is 0 and does not change.
+To understand how to find such C<sub>0</sub> and C<sub>1</sub>, let us consider for a moment that C<sub>0</sub> is zero and does not change.
 Thus, our cost function `J` is now just a function of C<sub>1</sub>. Graphically, this gives us a line passing through 0,0 and whose slope C<sub>1</sub> needs to be found such that its distance from all the given points {x<sub>i</sub>, y<sub>i</sub>} is minimum (i.e. the squared error function has the least value). Obviously, there will be just one such slope C<sub>1</sub> (proof not provided here but it is pretty intuitive). So if we plot the graph of J as a function of C<sub>1</sub>, it will be a U-shaped curve like this:
 
 ![J as a function of C1](docs/ml-1.png)
@@ -65,3 +65,23 @@ Thus, our cost function `J` is now just a function of C<sub>1</sub>. Graphically
 When J is a function of both C<sub>0</sub> and C<sub>1</sub>, the situation is similar, just that the same U-shaped curve exists in two dimensions and looks somewhat similar to:
 
 ![J as a function of C0 and C1](docs/ml-2.png)
+
+
+# Gradient Descent Algorithm
+
+One of the algorithm to find C<sub>0</sub> and C<sub>1</sub> is the gradient descent algorithm. Again to start simple, let us consider the case when C<sub>0</sub> is zero and does not change. This leaves us with just C<sub>1</sub> and a single U-shaped curve in 2D shown above.
+
+The gradient descent algorithm says that we can start with any value of C<sub>1</sub> and can calculate the next value of C<sub>1</sub> by the following function:
+C<sub>1</sub> = C<sub>1</sub> - (α Δ)
+
+Where **α** is a constant called the **step-size** and determines how fast we converge to our solution.  
+And **Δ** is the slope of J at C<sub>1</sub>
+
+So basically, all we are doing here is subtracting the a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>
+The step-size **α** cannot be too high otherwise the convergence will never happen and the gradient descent algorithm will just keep overshooting the minima its planning to achieve. If **α** is too low, then the convergence will happen too slowly, thus wasting computation cycles.
+
+With both C<sub>0</sub> and C<sub>1</sub>, the same thing applies:  
+C<sub>0</sub> = C<sub>0</sub> - (α Δ)  
+C<sub>1</sub> = C<sub>1</sub> - (α Δ)  
+The important thing to note here is that **Δ** should be calculated before doing the above two computations otherwise the convergence is somewhat unexpected and the algorithm does not fall under the gradient descent algorithm category.
+
