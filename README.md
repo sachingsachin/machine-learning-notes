@@ -81,7 +81,13 @@ So basically, all we are doing here is subtracting the a fraction of J's slope f
 The step-size **α** cannot be too high otherwise the convergence will never happen and the gradient descent algorithm will just keep overshooting the minima its planning to achieve. If **α** is too low, then the convergence will happen too slowly, thus wasting computation cycles.
 
 With both C<sub>0</sub> and C<sub>1</sub>, the same thing applies:  
-C<sub>0</sub> = C<sub>0</sub> - (α Δ)  
-C<sub>1</sub> = C<sub>1</sub> - (α Δ)  
-The important thing to note here is that **Δ** should be calculated before doing the above two computations otherwise the convergence is somewhat unexpected and the algorithm does not fall under the gradient descent algorithm category.
+C<sub>0</sub> = C<sub>0</sub> - (α Δ<sub>0</sub>)  
+C<sub>1</sub> = C<sub>1</sub> - (α Δ<sub>1</sub>)  
+
+The important thing to note here is that Δ<sub>0</sub> and Δ<sub>1</sub> are the partial derivates of the function J(C<sub>0</sub>, C<sub>1</sub>) and in every iteration, they should be calculated before doing the above two computations i.e. following should not be done:  
+C<sub>0</sub> = C<sub>0</sub> - (α Δ<sub>0</sub>)  
+Update J(C<sub>0</sub>, C<sub>1</sub>) with new value of C<sub>0</sub>  
+C<sub>1</sub> = C<sub>1</sub> - (α Δ<sub>1</sub>)  
+
+Because with the above intermediate updation of `J`, the convergence is somewhat unexpected and the algorithm does not fall under the gradient descent algorithm category anymore.
 
