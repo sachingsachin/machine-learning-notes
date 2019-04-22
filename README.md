@@ -74,7 +74,7 @@ One of the algorithm to find C<sub>0</sub> and C<sub>1</sub> is the gradient des
 The gradient descent algorithm says that we can start with any value of C<sub>1</sub> and can calculate the next value of C<sub>1</sub> by the following function:
 C<sub>1</sub> = C<sub>1</sub> - (α Δ)
 
-Where **α** is a constant called the **step-size** and determines how fast we converge to our solution.  
+Where **α** is a constant called the **step-size** (or the **learning rate**) and determines how fast we converge to our solution.  
 And **Δ** is the slope of J at C<sub>1</sub>
 
 So basically, all we are doing here is subtracting the a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>
