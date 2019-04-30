@@ -123,3 +123,32 @@ Then A<sup>T</sup> would be:
  | 2   4  6 |
   --      --
 ```
+
+# Multiple Linear Regression
+In most real world situations, the cases are more complex than the simple **C<sub>0</sub> + C<sub>1</sub>x** situation.
+A very natural extension of the above case is when:
+
+h<sub>c</sub>(x) = C<sub>0</sub> + C<sub>1</sub>x<sub>1</sub> + C<sub>2</sub>x<sub>2</sub> ... + C<sub>n</sub>x<sub>n</sub>
+
+Here, we can assume that x<sub>0</sub> is always 1.
+
+Thus, in matrix notation, this can be presented as:
+
+```
+        --  
+      | C0  |
+      | C1  |
+C =   | C2  |
+        ...
+      | Cn  |
+        --  
+
+        --  
+      | x0  |
+      | x1  |
+X =   | x2  |
+        ...
+      | xn  |
+        --  
+```
+and this gives H = C<sup>T</sup>X
