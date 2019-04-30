@@ -187,3 +187,24 @@ In practice, we do not just divide them with their respective ranges since its p
 
 x<sub>i</sub> = (x<sub>i</sub> - avg(x)) / (x<sub>max</sub> - x<sub>min</sub>)
 
+
+# Polynomial Regression
+
+It is not always possible to have a linear equation to represent the curve that will minimize the cost function i.e. fit the most number of points.
+It could be a polynomial expression too like:
+
+h(x) = C<sub>0</sub> + C<sub>1</sub>x + C<sub>2</sub>x<sup>2</sup> + C<sub>3</sub>x<sup>3</sup> ... C<sub>n</sub>x<sup>n</sup>
+
+It turns out that we can easily reduce the above to a linear regression problem by redefining the features.  
+For example, we can redefine as:  
+z<sub>0</sub> = x<sup>0</sup>  
+z<sub>1</sub> = x<sup>1</sup>  
+z<sub>2</sub> = x<sup>2</sup>  
+...  
+z<sub>n</sub> = x<sup>n</sup>  
+
+Thus, our curve h(x) becomes:  
+h(x) = C<sub>0</sub> + C<sub>1</sub>z + C<sub>2</sub>z<sub>2</sub> + C<sub>3</sub>z<sub>3</sub> ... C<sub>n</sub>z<sub>n</sub>
+
+which is same as linear regression ! So we solve for this linear regression and then transform back the results to the original form.
+
