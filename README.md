@@ -152,3 +152,22 @@ X =   | x2  |
         --  
 ```
 and this gives H = C<sup>T</sup>X
+
+
+# Gradient Descent for multiple linear regression
+
+Recall from the above that the squared error function J is defined as:
+
+J = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+
+This does not change for the multiple linear regression case. Just becomes a little more verbose as:
+
+J(C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub>) = summation (h<sub>c</sub>(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+
+
+The method to converge on the most desirable value set of C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> also remains the same:
+
+C0 = C0 - (α Δ0)  
+C1 = C1 - (α Δ1)  
+...  
+Cn = Cn - (α Δ1)  
