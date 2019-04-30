@@ -91,3 +91,35 @@ C<sub>1</sub> = C<sub>1</sub> - (α Δ<sub>1</sub>)
 
 Because with the above intermediate updation of `J`, the convergence is somewhat unexpected and the algorithm does not fall under the gradient descent algorithm category anymore.
 
+# Matrix Inverse
+
+Just as in the non-matrix world, most numbers have an inverse such that AA<sup>-1</sup> = 1, similarly in the matrix world, there exists matrix inverse M<sup>-1</sup> such that MM<sup>-1</sup> = I (i.e. the identity matrix).
+
+**Note**: Just like 0 does not have an inverse, every matrix does not have an inverse. Example:
+```
+  --   --
+ | 0   0 |
+ | 0   0 |
+  --   --
+```
+
+
+# Matrix Transpose
+
+Transpose matrix of any matrix is simply the matrix formed by converting each row of the original matrix into a column of the transpose matrix.
+So if original matrix A is:
+```
+  --   --
+ | 1   2 |
+ | 3   4 |
+ | 5   6 |
+  --   --
+```
+
+Then A<sup>T</sup> would be:
+```
+  --      --
+ | 1   3  5 |
+ | 2   4  6 |
+  --      --
+```
