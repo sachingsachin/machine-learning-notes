@@ -208,3 +208,68 @@ h(x) = C<sub>0</sub> + C<sub>1</sub>z + C<sub>2</sub>z<sub>2</sub> + C<sub>3</su
 
 which is same as linear regression ! So we solve for this linear regression and then transform back the results to the original form.
 
+
+# Normal Equation : Solving for C by a formula
+
+The below function J(C<sub>1</sub>) is minimum when its slope dJ/dC<sub>1</sub> = 0.  
+This fact becomes obvious when we realize that only when slope=0, J(C<sub>1</sub>) changes direction from decreasing to increasing. So the minimum has to be when dJ/dC<sub>1</sub> = 0
+
+![J as a function of C1](docs/ml-1.png)
+
+The same fact applies when J is a function of C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> except that dJ/dC<sub>1</sub> becomes a [partial derivative](https://en.wikipedia.org/wiki/Partial_derivative). So `J` achieves its lowest value when we solve all the following equations:  
+
+  dJ/dC<sub>0</sub> = 0  
+  dJ/dC<sub>1</sub> = 0  
+  dJ/dC<sub>2</sub> = 0  
+  ...  
+  dJ/dC<sub>n</sub> = 0  
+
+(Note that dJ/dC<sub>i</sub> denotes the partial derivative of J with respect to C<sub>i</sub>)
+
+There are n+1 equations above and n+1 variables to solve.  
+Solution for this kind of setup is given by the formula: C<sub>ideal</sub> = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y
+
+where:  
+
+`X` is m-by-n+1 input matrix  
+`Y` is m-by-1 output matrix  
+`m` is the number of data points we have.  
+`n` is the number of features present in the the data.
+
+Example: If we have the selling-price of a cloth as a function of n=3 features: size, cost price and tax with m=4 data points as follows:
+
+|C<sub>1</sub>=size|C<sub>2</sub>=cost-price|C<sub>3</sub>=tax|y=selling-price|
+|----|----------|---|-------------|
+| 10 | 100      | 10| 140         |
+| 11 | 120      | 15| 160         |
+| 10 | 120      | 11| 155         |
+| 14 | 140      | 14| 200         |
+
+then our input matrix X<sub>m,n+1</sub> (with m = 4, n = 3) would be:
+```
+  --           --
+| 1  10  100  10 |
+| 1  11  120  15 |
+| 1  10  120  11 |
+| 1  14  140  14 |
+ --            --
+```
+Here first column denotes C<sub>0</sub> which is always 1.
+
+And y<sub>m,1</sub> would be:
+```
+ -- --
+| 140 |
+| 160 |
+| 155 |
+| 200 |
+ -- --
+ ```
+ 
+Compared to gradient descent, this method of direct computation is good because:
+1. There is no iteration involved and we get the best value of C(n,1) in one shot.
+2. No need to find out a right value of step-size **α**
+3. No need to do feature scaling
+
+However, its only disadvantage is that the matrix operations involved here are of the O(n<sup>3</sup>) which makes it very costly when n is more than 10,000. At that point, it is sometimes advisable to fall back to gradient descent to speed up calculations.
+
