@@ -271,5 +271,5 @@ Compared to gradient descent, this method of direct computation is good because:
 2. No need to find out a right value of step-size **α**
 3. No need to do feature scaling
 
-However, its only disadvantage is that the matrix operations involved here are of the O(n<sup>3</sup>) which makes it very costly when n is more than 10,000. At that point, it is sometimes advisable to fall back to gradient descent to speed up calculations.
+However, its only disadvantage is that the matrix operations involved here are of the O(n<sup>3</sup>) which makes it very costly when n is more than 10,000. At that point, it is sometimes advisable to fall back to gradient descent (with order as O(kn<sup>2</sup>)) to speed up calculations.
 
