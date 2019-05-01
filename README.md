@@ -273,3 +273,13 @@ Compared to gradient descent, this method of direct computation is good because:
 
 However, its only disadvantage is that the matrix operations involved here are of the O(n<sup>3</sup>) which makes it very costly when n is more than 10,000. At that point, it is sometimes advisable to fall back to gradient descent (with order as O(kn<sup>2</sup>)) to speed up calculations.
 
+
+**Quick dimension check for (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y**
+
+X is an (m, n+1) matrix.  
+So X<sup>T</sup> would be (n+1, m) matrix.  
+X<sup>T</sup>X would therefore be (n+1, m)(m, n+1) = (n+1, n+1) matrix.  
+(X<sup>T</sup>X)<sup>-1</sup> would also be same (n+1, n+1) matrix.  
+(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup> = (n+1, n+1)(n+1, m) = (n+1, m) matrix.  
+And the final expression (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y = (n+1, m)(m, 1) = (n+1, 1) matrix.  
+(n+1, 1) matrix thus obtained gives us the ideal values of C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> that we need to best-fit the linear equation for the given data.
