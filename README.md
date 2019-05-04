@@ -95,9 +95,9 @@ Because with the above intermediate updation of `J`, the convergence is somewhat
 
 Skipping the derivation part, the formula for slope Δ<sub>j</sub> is:
 
-Δ<sub>j</sub> = summation<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)*(x<sub>i,j</sub>))/m  
+Δ<sub>j</sub> = summation<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
 Substituting value of h<sub>i</sub> =  
-Δ<sub>j</sub> = summation<sub>i=1:m</sub>((x<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)*(x<sub>i,j</sub>))/m  
+Δ<sub>j</sub> = summation<sub>i=1:m</sub>((x<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
 
 
 # Matrix Inverse
