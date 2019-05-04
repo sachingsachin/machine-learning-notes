@@ -297,3 +297,32 @@ X<sup>T</sup>X would therefore be (n+1, m)(m, n+1) = (n+1, n+1) matrix.
 (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup> = (n+1, n+1)(n+1, m) = (n+1, m) matrix.  
 And the final expression (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y = (n+1, m)(m, 1) = (n+1, 1) matrix.  
 (n+1, 1) matrix thus obtained gives us the ideal values of C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> that we need to best-fit the linear equation for the given data.
+
+
+# Logistic Regression - Classification Algorithm
+
+Most simplest form of a classfication problem is the binary one where the outcome is always one of the two values only.
+Like algorithm to predict whether it is dark or not at 6:00 pm with input as day of the year.
+Or algorithm to predict whether a car will have accident or not with input as the speed of the car.
+
+In such algorithms, the outcome has just one of the two values and several data-points are provided for the algorithm for curve-fitting.
+If we apply linear regression to such cases and draw a line or a polynomial, it is very highly probably that the h(x) will be have values beyond the two we expect.
+One way is to scale down the output by a suitable factor to limit the range of h(x) but doing so be difficult when the range of h(x) is quite high like -INF to +INF. Secondly, if the inputs for any one value are much more than the inputs for other value, then the resulting curve will be more tuned to the needs of the larger group.
+
+To overcome these problems, a new kind of h(x) is proposed (only for classification type problems).
+This h(x) is called [logistic regression function](https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html) and is of the form:  
+1 / (1 + e<sup>-z</sup>)  
+This curve shows saturation at +1 and -1 values and it only takes values between -1 and +1.
+
+![Logit Function](https://ml-cheatsheet.readthedocs.io/en/latest/_images/sigmoid.png)
+
+Values below 0.5 are taken as 1 and values below 0.5 are taken as 0.
+So the transition occurs at 0.5
+
+=> 0.5 = 1 / (1 + e<sup>-z</sup>)  
+=> 1 + e<sup>-z</sup> = 2  
+=> e<sup>-z</sup> = 1
+=> z = 0
+
+For the machine learning algorithms, the `z` is replaced by C<sup>T</sup>X.
+
