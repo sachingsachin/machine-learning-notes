@@ -91,6 +91,15 @@ C<sub>1</sub> = C<sub>1</sub> - (α Δ<sub>1</sub>)
 
 Because with the above intermediate updation of `J`, the convergence is somewhat unexpected and the algorithm does not fall under the gradient descent algorithm category anymore.
 
+# Calculation of the slope w.r.t x<sub>0</sub>, x<sub>1</sub> .. x<sub>n</sub>
+
+Skipping the derivation part, the formula for slope Δ<sub>j</sub> is:
+
+Δ<sub>j</sub> = summation<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)*(x<sub>i,j</sub>))/m  
+Substituting value of h<sub>i</sub> =  
+Δ<sub>j</sub> = summation<sub>i=1:m</sub>((x<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)*(x<sub>i,j</sub>))/m  
+
+
 # Matrix Inverse
 
 Just as in the non-matrix world, most numbers have an inverse such that AA<sup>-1</sup> = 1, similarly in the matrix world, there exists matrix inverse M<sup>-1</sup> such that MM<sup>-1</sup> = I (i.e. the identity matrix).
