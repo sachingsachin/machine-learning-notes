@@ -406,3 +406,11 @@ where Δ<sub>j</sub> is:
 
 The above is exactly the same as linear regression with just one change that the hypothesis function `h` is different in logistic regression.
 
+
+# Minimizing J in practice
+More sophisticated algorithms are available in both Matlab and Octave that automatically change the learning rate `α` and compute the solution much faster. Some such algorithms are:
+* Conjugate gradient
+* BFGS
+* L-BFGS
+
+
