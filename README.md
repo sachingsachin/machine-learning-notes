@@ -32,7 +32,7 @@ h(x) = C<sub>0</sub> + C<sub>1</sub>x
 
 So if the known set of values consists of data like [{x<sub>0</sub>, y<sub>0</sub>}, {x<sub>1</sub>, y<sub>1</sub>}...  {x<sub>i</sub>, y<sub>i</sub>}... {x<sub>m</sub>, y<sub>m</sub>}], then the **cost function** is defined as:
 
-J = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+J = ∑<sub>i=1:m</sub>(h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
 
 And the line is considered a best fit when C<sub>0</sub> and C<sub>1</sub> are chosen to provide a minimum value for the above cost function.
 
@@ -95,9 +95,9 @@ Because with the above intermediate updation of `J`, the convergence is somewhat
 
 Skipping the derivation part, the formula for slope Δ<sub>j</sub> is:
 
-Δ<sub>j</sub> = summation<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
+Δ<sub>j</sub> = ∑<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
 Substituting value of h<sub>i</sub> =  
-Δ<sub>j</sub> = summation<sub>i=1:m</sub>((X<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
+Δ<sub>j</sub> = ∑<sub>i=1:m</sub>((X<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
 
 In the above:  
 X is a m-by-n+1 matrix (m is number of samples, n is number of features),  
@@ -174,11 +174,11 @@ Note that x<sub>0</sub>, x<sub>1</sub> ... x<sub>n</sub> are also called the N+1
 
 Recall from the above that the squared error function J is defined as:
 
-J = summation (h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+J = ∑<sub>i=1:m</sub>(h<sub>i</sub> - y<sub>i</sub>)<sup>2</sup>/2M
 
 This does not change for the multiple linear regression case. Just becomes a little more verbose as:
 
-J(C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub>) = summation (h<sub>c</sub>(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
+J(C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub>) = ∑<sub>i=1:m</sub>(h<sub>i</sub> - y<sub>i</sub>)<sup>2</sup>/2M
 
 
 The method to converge on the most desirable value set of C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> also remains the same:
@@ -362,11 +362,12 @@ Thus, if we segregate our input data into two parts, one where y=0 and one where
 Similarly we can use `-log(1-h)` as a cost function for those inputs where y=0 because the cost is 0 when h=0 and the penalty of h being 1 is INF (again quit high).
 
 So we can define as our cost function as:  
-J = summation<sub>i=1:m</sub>(Cost(C,h,y))/m  
+J = ∑<sub>i=1:m</sub>(Cost(C,h,y))/m  
 Cost(C,h,y) is function of:  
  - Constants C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub>  
  - Hypothesis h (i.e. the curve we plan to build)
  - And y, the output
+
 And Cost(C,h,y) is defined as:  
 ```
   if (y == 1) {
@@ -377,3 +378,31 @@ And Cost(C,h,y) is defined as:
 ```
 
 Note that `J` is the final cost function while Cost<sub>i</sub>(C,h,y) is cost for each input tuple {x<sub>i</sub>, y<sub>i</sub>}.
+
+The above if condition can be written more simply as:
+
+```
+Cost = -(y*log(h) + (1-y)*log(1-h))
+```
+Its easy to verify that for y=0,1 values, the above equation does collapse to the if-statement given before it.
+
+Using this "simpler" format, the final cost function J can be written as:
+
+J = -∑<sub>i=1:m</sub>(y<sub>i</sub>\*log(h<sub>i</sub>) + (1-y<sub>i</sub>)\*log(1-h<sub>i</sub>))/m
+
+All we need to do now is to minimize this cost function and get the Constants C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> which will best fit our curve.
+It turns out that the final equation for the gradient descent of this is also the same as that for linear regression:
+
+Iterate n-times and adjust C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub> in each iteration as:
+
+C<sub>0</sub> = C<sub>0</sub> - (α Δ<sub>0</sub>)  
+C<sub>1</sub> = C<sub>1</sub> - (α Δ<sub>1</sub>)  
+...  
+C<sub>n</sub> = C<sub>n</sub> - (α Δ<sub>n</sub>)  
+
+where Δ<sub>j</sub> is:
+
+Δ<sub>j</sub> = ∑<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m 
+
+The above is exactly the same as linear regression with just one change that the hypothesis function `h` is different in logistic regression.
+
