@@ -306,18 +306,18 @@ Like algorithm to predict whether it is dark or not at 6:00 pm with input as day
 Or algorithm to predict whether a car will have accident or not with input as the speed of the car.
 
 In such algorithms, the outcome has just one of the two values and several data-points are provided for the algorithm for curve-fitting.
-If we apply linear regression to such cases and draw a line or a polynomial, it is very highly probably that the h(x) will be have values beyond the two we expect.
-One way is to scale down the output by a suitable factor to limit the range of h(x) but doing so be difficult when the range of h(x) is quite high like -INF to +INF. Secondly, if the inputs for any one value are much more than the inputs for other value, then the resulting curve will be more tuned to the needs of the larger group.
+If we apply linear regression to such cases and draw a line or a polynomial, it is very highly probably that the h(x) will have values beyond the two we expect.
+One way is to scale down the output by a suitable factor to limit the range of h(x) but doing so is difficult when the range of h(x) is quite high like -INF to +INF. Secondly, if the inputs for one kind of output are much more than the inputs for other kind of output, then the resulting curve will be more tuned to fit the larger group.
 
-To overcome these problems, a new kind of h(x) is proposed (only for classification type problems).
+To overcome these problems, a new kind of h(x) is proposed for classification type problems.
 This h(x) is called [logistic regression function](https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html) and is of the form:  
 1 / (1 + e<sup>-z</sup>)  
 This curve shows saturation at +1 and -1 values and it only takes values between -1 and +1.
 
 ![Logit Function](https://ml-cheatsheet.readthedocs.io/en/latest/_images/sigmoid.png)
 
-Values below 0.5 are taken as 1 and values below 0.5 are taken as 0.
-So the transition occurs at 0.5
+To limit the output of this function to just two values, we round the output such that values below 0.5 are taken as 1 and values below 0.5 are taken as 0.
+So the transition occurs at 0.5.
 
 => 0.5 = 1 / (1 + e<sup>-z</sup>)  
 => 1 + e<sup>-z</sup> = 2  
@@ -326,3 +326,33 @@ So the transition occurs at 0.5
 
 For the machine learning algorithms, the `z` is replaced by C<sup>T</sup>X.
 
+
+# Cost function for Logistic Regression
+
+Next step is to find out a cost function which we will try to minimize so that our chosen `C` best fits the curve.
+We cannot have the same cost function as linear regression because with h(x) = 1 / (1 + e<sup>-z</sup>) with z = C<sup>T</sup>X, the linear regression's cost function tends to be wavy with several local minima. So some other cost function needs to be used.
+
+Consider log(v):
+
+|power of b|v|log<sub>b</sub>(v)|
+|---|---|------|
+| b<sup>-2</sup> | 1/b<sup>2</sup> | -2 |
+| b<sup>-1</sup> | 1/b | -1 |
+| b<sup>0</sup> | 1 | 0 |
+| b<sup>1</sup> | b | 1 |
+| b<sup>2</sup> | b<sup>2</sup> | 2 |
+| b<sup>-INF</sup> | 0 | -INF |
+
+Graphically, this looks as follows:
+
+![log(x)](./docs/logx.png?s=300)
+
+And -log(v) looks as follows:
+
+![-log(x)](./docs/logx-neg.png?s=300)
+
+And now consider the following two graphs:
+
+|-log(x)|-log(1-x)|
+|-------|---------|
+|![-log(x)](./docs/logx-limit1.png?s=300)|![-log(1-x)](./docs/log1-x-limit1.png?s=300)|
