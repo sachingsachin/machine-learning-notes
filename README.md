@@ -414,3 +414,12 @@ More sophisticated algorithms are available in both Matlab and Octave that autom
 * L-BFGS
 
 
+# Overfitting problem with too many features or with higher level polynomials
+
+When the number of inputs (also called features) are too many or we use very high level polynomials to fit the curve too exactly, then it is possible that the curve just fits too nicely such that it does a great job of lowering the cost function for the given set of data, but predicts very badly for any new set of inputs.
+
+This overfitting can be reduced by having a `model selection algorithm` that automatically throws away some of the features it thinks are not useful.
+
+Anohter algorithm to fix this problem is called `regularization` where in the value of each constant is reduced somewhat to make them less impactful.
+
+
