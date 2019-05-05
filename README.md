@@ -356,3 +356,24 @@ And now consider the following two graphs:
 |-log(x)|-log(1-x)|
 |-------|---------|
 |![-log(x)](./docs/logx-limit1.png?s=300)|![-log(1-x)](./docs/log1-x-limit1.png?s=300)|
+
+
+Thus, if we segregate our input data into two parts, one where y=0 and one where y=1, then we can use `-log(h)` as a cost function for those inputs where y=1 because the cost is 0 when h=1 and penalty of h being 0 is INF i.e. quite high.  
+Similarly we can use `-log(1-h)` as a cost function for those inputs where y=0 because the cost is 0 when h=0 and the penalty of h being 1 is INF (again quit high).
+
+So we can define as our cost function as:  
+J = summation<sub>i=1:m</sub>(Cost(C,h,y))/m  
+Cost(C,h,y) is function of:  
+ - Constants C<sub>0</sub>, C<sub>1</sub> ... C<sub>n</sub>  
+ - Hypothesis h (i.e. the curve we plan to build)
+ - And y, the output
+And Cost(C,h,y) is defined as:  
+```
+  if (y == 1) {
+     Cost = -log(h)
+  } else {
+     Cost = -log(1-h)
+  }
+```
+
+Note that `J` is the final cost function while Cost<sub>i</sub>(C,h,y) is cost for each input tuple {x<sub>i</sub>, y<sub>i</sub>}.
