@@ -186,7 +186,7 @@ The method to converge on the most desirable value set of C<sub>0</sub>, C<sub>1
 C0 = C0 - (α Δ0)  
 C1 = C1 - (α Δ1)  
 ...  
-Cn = Cn - (α Δ1)  
+Cn = Cn - (α Δn)  
 
 
 # Feature Scaling
@@ -422,4 +422,31 @@ This overfitting can be reduced by having a `model selection algorithm` that aut
 
 Anohter algorithm to fix this problem is called `regularization` where in the value of each constant is reduced somewhat to make them less impactful.
 
+
+# Regularization
+
+We cannot reduce all the C<sub>i=1:n</sub> by the same value because that will not be a proportionate change and will give us a cost function that is not minimum.
+So we have to include the C<sub>i=1:n</sub> in the cost function itself somehow such that it also plays a role in the gradient descent equations.
+One way to do that is to change the cost function to:
+
+J = (∑<sub>i=1:m</sub>(h<sub>i</sub> - y<sub>i</sub>)<sup>2</sup> + λ\*∑<sub>i=1:n</sub>C<sub>i</sub><sup>2</sup>) / 2 M
+
+Here λ is called the `regularization factor`. If its too high, then all C<sub>i</sub>s will be too low and the curve will essentially be a straight line.
+If its too low, then all C<sub>i</sub>s will be too high and the curve will become very overfitted.
+
+The partial derivative equations of gradient descent thus changes accordingly as:
+
+C<sub>j</sub> = C<sub>j</sub> -  α (∑<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>)) + λ\*C<sub>j</sub>)/m  
+i.e. C<sub>j</sub> = C<sub>j</sub> (1 - αλ/m) - α ∑<sub>i=1:m</sub>((h<sub>i</sub> - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
+
+So the last term remains as such in the gradient descent of linear regression.
+Only change introduced is that in every iteration C<sub>j</sub> gets reduced even more by the factor (1 - αλ/m).  
+In practice this factor is kept quite small like .99  
+
+Similarly, the normal equation that directly solves the linear regression changes from:  
+(X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y  
+to:  
+(X<sup>T</sup>X + λI<sub>n+1</sub>)<sup>-1</sup>X<sup>T</sup>y  
+
+where I<sub>n+1</sub> is the [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix).
 
