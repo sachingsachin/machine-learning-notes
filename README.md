@@ -450,3 +450,8 @@ to:
 
 where I<sub>n+1</sub> is the [identity matrix](https://en.wikipedia.org/wiki/Identity_matrix).
 
+Same thing follows for the logistic regression too:
+
+We add the term λ\* ∑<sub>i=1:n</sub>C<sub>i</sub><sup>2</sup> / 2 M to the cost function J  
+And the partial derivatives reduce by C<sub>j</sub> (1 - αλ/m) just like linear regression above.
+
