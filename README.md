@@ -324,7 +324,9 @@ So the transition occurs at 0.5.
 => e<sup>-z</sup> = 1
 => z = 0
 
-For the machine learning algorithms, the `z` is replaced by C<sup>T</sup>X.
+For the machine learning algorithms, the `z` is replaced by C<sup>T</sup>X.  
+Note that 1 / (1 + e<sup>-z</sup>) is also called the `sigmoid` function and so we can represent the hypothesis `h` as:  
+h(x) = sigmoid(C<sup>T</sup>X)  
 
 
 # Cost function for Logistic Regression
@@ -455,3 +457,22 @@ Same thing follows for the logistic regression too:
 We add the term λ\* ∑<sub>i=1:n</sub>C<sub>i</sub><sup>2</sup> / 2 M to the cost function J  
 And the partial derivatives reduce by C<sub>j</sub> (1 - αλ/m) just like linear regression above.
 
+
+# Neural Networks
+
+Logistic regression cannot form complex hypotheses as it is only a linear classifier.
+If we add more features to it or make it polynomial, then it becomes very costly computation wise.
+
+This is where neural networks come into play. Here is an example neural network:  
+![Neural Network Example](./docs/ml3-nn.png)  
+
+Input layer is the list of features X<sub>i=1:n</sub> and the output layer is a list of the classification values Y.
+All the other hidden layers are logistic regressions of their previous layers.
+So in the above example:  
+hidden1 = sigmoid(C<sub>1</sub><sup>T</sup>X)  
+hidden2 = sigmoid(C<sub>2</sub><sup>T</sup>hidden1)  
+output = sigmoid(C<sub>3</sub><sup>T</sup>hidden2)  
+
+The goal of neural network is to compute the C<sub>1</sub>, C<sub>2</sub> ... C<sub>n</sub> such that the output Y is classfied as accurately as possible.
+
+So neural network applies the logistic regression on multiple layers to improve its prediction power.
