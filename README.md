@@ -496,12 +496,17 @@ z<sup>(i)</sup> = C<sup>(i-1)</sup>a<sup>(i-1)</sup>
 a<sup>(i)</sup> = g(z<sup>(i)</sup>)  
 
 We can define the error at output as:  
-Δ = a<sup>(l)</sup> - y  
+δ = a<sup>(l)</sup> - y  
 
-In the back-propogation algirthm, we calculate Δ for each layer, beginning with the last year as:
-Δ<sup>l</sup> = a<sup>(l)</sup> - y  
-Δ<sup>i</sup> = (C<sup>(i)</sup>)<sup>T</sup>Δ<sup>i+1</sup> .\* g'(z<sup>(i)</sup>)  
+In the back-propogation algirthm, we calculate δ for each layer, beginning with the last year as:
+δ<sup>l</sup> = a<sup>(l)</sup> - y  
+δ<sup>i</sup> = (C<sup>(i)</sup>)<sup>T</sup>δ<sup>i+1</sup> .\* g'(z<sup>(i)</sup>)  
 for all i < l  
 
-here `g'` is the [derivative of sigmoid function `g()`](https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x) where g(z) = 1/(1+e<sup>-z</sup>)  
+here `g'` is the [derivative of sigmoid function](https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x) where g(z) = 1/(1+e<sup>-z</sup>)  
 And this comes out to be g'(z) = z .\* (1-z)  
+
+Ignoring some complex math, we can arrive at the conclusion that the derivate of the cost function for above neural network case is:  
+Δ<sup>l</sup> = a<sup>l</sup>δ<sup>l+1</sup>
+
+We just loop over the input set, calculating Δ<sup>l</sup> for each input and then sum them together to form the combined derivative for all the inputs.
