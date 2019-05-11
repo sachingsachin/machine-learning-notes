@@ -503,5 +503,5 @@ In the back-propogation algirthm, we calculate Δ for each layer, beginning with
 Δ<sup>i</sup> = (C<sup>(i)</sup>)<sup>T</sup>Δ<sup>i+1</sup> .\* g'(z<sup>(i)</sup>)  
 for all i < l  
 
-here `g'` is the derivative of `g()` where g(z) = 1/(1+e<sup>-z</sup>)  
+here `g'` is the [derivative of sigmoid function `g()`](https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x) where g(z) = 1/(1+e<sup>-z</sup>)  
 And this comes out to be g'(z) = z .\* (1-z)  
