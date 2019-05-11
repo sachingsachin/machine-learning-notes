@@ -476,3 +476,32 @@ output = sigmoid(C<sub>3</sub><sup>T</sup>hidden2)
 The goal of neural network is to compute the C<sub>1</sub>, C<sub>2</sub> ... C<sub>n</sub> such that the output Y is classfied as accurately as possible.
 
 So neural network applies the logistic regression on multiple layers to improve its prediction power.
+
+
+# Formulating Neural Networks: Back-propogation algorithm
+
+We can introduce some more expressions into the above equations so that it would be easier to formulate them later:
+
+Let a<sup>i</sup> denote the output at layer `i`. Then we can say the following:  
+a<sup>(1)</sup> = x (i.e. the input layer itself)  
+a<sup>(2)</sup> = g(C<sup>(1)</sup>a<sup>(1)</sup>)  
+a<sup>(3)</sup> = g(C<sup>(2)</sup>a<sup>(2)</sup>)  
+...  
+a<sup>(l)</sup> = g(C<sup>(l-1)</sup>a<sup>(l-1)</sup>)  
+h = a<sup>(l)</sup>  
+l = number of layers in the neural network  
+
+We also name the expression inside `g()` as `z` so that:  
+z<sup>(i)</sup> = C<sup>(i-1)</sup>a<sup>(i-1)</sup>  
+a<sup>(i)</sup> = g(z<sup>(i)</sup>)  
+
+We can define the error at output as:  
+Δ = a<sup>(l)</sup> - y  
+
+In the back-propogation algirthm, we calculate Δ for each layer, beginning with the last year as:
+Δ<sup>l</sup> = a<sup>(l)</sup> - y  
+Δ<sup>i</sup> = (C<sup>(i)</sup>)<sup>T</sup>Δ<sup>i+1</sup> .\* g'(z<sup>(i)</sup>)  
+for all i < l  
+
+here `g'` is the derivative of `g()` where g(z) = 1/(1+e<sup>-z</sup>)  
+And this comes out to be g'(z) = z .\* (1-z)  
