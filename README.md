@@ -504,7 +504,7 @@ In the back-propogation algirthm, we calculate δ for each layer, beginning with
 for all i < l  
 
 here `g'` is the [derivative of sigmoid function](https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x) where g(z) = 1/(1+e<sup>-z</sup>)  
-And this comes out to be g'(z) = z .\* (1-z)  
+And this comes out to be g'(z) = g(z) .\* (1-g(z))  
 
 Ignoring some complex math, we can arrive at the conclusion that the derivate of the cost function for above neural network case is:  
 Δ<sup>l</sup> = a<sup>l</sup>δ<sup>l+1</sup>
