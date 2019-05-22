@@ -518,3 +518,41 @@ Ignoring some complex math, we can arrive at the conclusion that the derivate of
 
 We just loop over the input set, calculating Δ<sup>l</sup> for each input and then sum them together to form the combined derivative for all the inputs.
 
+
+# Bias vs Variance
+
+A solution is said to have a high bias if its **underfitting** i.e. the error is quite high even for the most optimal values of `C`.
+Conversely, a solution is said to have high variance if its **overfitting** i.e. the error is quite low for the given training set but the prediction-error is quite high.
+
+
+# Deciding what parameters to change to avoid both bias and variance
+The Cost function `J` depends not only `C`. It also depends upon:  
+
+1. Number of training examples `m`
+2. Regularization factor `λ`
+3. Number of features
+4. Degree of the polynomial whose curve we are trying to fit.
+
+It is generally a good idea to divide your training set into 3 parts (generally 60%, 20% and 20%):  
+1. **Training Set** - Used to train the set as usual for calculating the best `C`
+2. **Validation Set** - Used to calculate the cost for different values of the above 4 parameters and select the best parameter for those.
+3. **Test Set** - After training and validation has been done, this test-set is used to calculate the cost and see how the above 2 really performed, like a test for all the optimizations done.
+
+
+|Param|Causes High Bias?|Causes High Variance?|
+|-----|-----------------|---------------------|
+|High number of training examples `m`|No|No|
+|Higher regularization factor|Yes|No|
+|High number of features|Yes|No|
+|High degree of the polynomial|No|Yes|
+
+|Param|Fixes High Bias?|Fixes High Variance?|
+|-----|----------------|--------------------|
+|Increasing number of training examples `m`|Possibly|Yes|
+|Increasing regularization factor|No|Yes|
+|Increasing number of features|No|Yes|
+|Increasing degree of the polynomial|Yes|No|
+
+So if the machine learning algorithm is not able to predict very accurately, then we should first determine whether its bias is high or its variance. Then we can look at the above tables to determine what inputs we can change to have a better algorithm.
+
+
