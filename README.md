@@ -556,3 +556,34 @@ It is generally a good idea to divide your training set into 3 parts (generally 
 So if the machine learning algorithm is not able to predict very accurately, then we should first determine whether its bias is high or its variance. Then we can look at the above tables to determine what inputs we can change to have a better algorithm.
 
 
+# Precision and Recall
+
+Consider a prediction algorithm that just outputs a 1 or 0.  
+One way to represent its accuracy is to draw a matrix like the following:  
+
+```
+                Actual Outcome
+ Predcited    P=1,A=1     P=1,A=0    
+ Outcome      P=0,A=1     P=0,A=0
+```
+Above 4 cases are known as:
+```
+                            Actual Outcome
+ Predcited    TP: True Positive       FP: False Positive
+ Outcome      FN: False Negative      TN: True Negative
+```
+
+**Precision** is then defined as:  
+```
+P = TP / (TP + FP)  
+```
+i.e. precision is a measure of how accurate was the prediction for cases where we predicted 1.  
+
+And **Recall** is defined as:  
+```
+R = TP / (TP + FN)
+```
+i.e. precision is a measure of how accurate was the prediction for cases where the value was actually 1.  
+
+If both precision and recall are close to 1, then the algorithm is said to be good.
+
