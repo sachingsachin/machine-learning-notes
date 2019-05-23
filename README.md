@@ -583,7 +583,40 @@ And **Recall** is defined as:
 ```
 R = TP / (TP + FN)
 ```
-i.e. precision is a measure of how accurate was the prediction for cases where the value was actually 1.  
+i.e. recall is a measure of how accurate was the prediction for cases where the value was actually 1.  
 
 If both precision and recall are close to 1, then the algorithm is said to be good.
 
+
+# F Score
+Precision and Recall are great indicators of how good a particular learning algorithm's prediction is but they often run against each other i.e. if you optimize one, then it generally happens at the cost of the other. Given this problem, it becomes hard to compare the performance of many algorithms. Example is algorithm with P=0.6 and R=0.3 better than another algorithm with P=0.5 and R=0.4 ?
+
+What we need is a single parameter instead of two for comparing algorithms against one another.
+
+Some common ways to convert P and R into one param are:
+1. **Average**: Not a very good indicator since you this will make 0.9,0.1 as good as 0.5,0.5 where as the former is clearly bad because such low R means a very low ability to output true for all the cases where the output should have been true really.
+2. **Sum**: This suffers from the same problem as average.
+3. **Product**: This is just the opposite of sum/average. While sum/avg formulas did not penalize a very low P or R, product formula penalizes very low values very heavily.
+
+So a simple solution is to use both average and product in such a way that they balance each other.
+
+This simple solution is called the **F Score** and is defined as:  
+```
+2 PR / (P + R)
+```
+i.e. product divided by average.  
+The maximum value of this score is when both P and R are 1:
+```
+2*1*1 / (1 + 1) = 2/2 = 1
+```
+|P|R|F|
+|-|-|-|
+|0.9|0.1|0.18|
+|0.8|0.2|0.32|
+|0.7|0.3|0.42|
+|0.6|0.4|0.48|
+|0.5|0.5|0.5|
+|0.6|0.6|0.6|
+|0.4|0.4|0.4|
+
+This helps the decision making process somewhat by having to look at only 1 parameter. Even this is far from perfect though since different situations might call for different trade-offs in P and R such that 0.7,0.3 might be actually considered better than 0.5,0.5 in some cases.
