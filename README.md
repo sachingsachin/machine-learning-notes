@@ -627,3 +627,37 @@ The maximum value of this score is when both P and R are 1:
 |0.4|0.4|0.4|
 
 This helps the decision making process somewhat by having to look at only 1 parameter. Even this is far from perfect though since different situations might call for different trade-offs in P and R such that 0.7,0.3 might be actually considered better than 0.5,0.5 in some cases.
+
+
+# Unsupervising Learning
+
+These algorithms are the ones where Y is absent. That is there is no user labeling of the output.  
+And the ML algorithm has to identify the classification on its own.
+
+# K-Means Algorithm
+
+K-Means algorithm is a classification algorithm that attempts to group similar data together.  
+It performs this feat as follows:
+
+1. Randomly initialize few points in the dataset called the **centroids**.
+2. For each example in the dataset, calculate its distance from all the centroids.
+3. Assign every example to its nearest centroid using the above logic.
+4. Calculate new position of each centroid as **the average of the examples that got assigned to it**.
+5. Re-run (2) to (4) until we have an acceptable accuracy in the assignment of examples to centroids.
+6. One way to calculate accuracy of assignment is to calculae how many examples move from one centroid to other in each run. If very few points move on every subsequent run of the algorithm, then we have achieved the desired accuracy.
+
+Main variables in this algorithm are:
+
+- K : number of centroids
+- Training set: x<sup>1</sup>, x<sup>2</sup> ... x<sup>m</sup>
+ 
+Where x<sup>i</sup> ∈ ℝ<sup>n</sup> (i.e. where each x<sup>i</sup> is a n-dimensional feature vector)
+
+# Cost function of K-Means
+
+J = (1/m) * ∑<sub>i=1:m</sub>(x<sup>i</sup> - μ<sub>i</sub>)<sup>2</sup>
+
+Where:  
+- m : number of examples  
+- μ<sub>i</sub> : centroid to which x<sup>i</sup> is currently assigned  
+
