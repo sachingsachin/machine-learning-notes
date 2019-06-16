@@ -661,3 +661,63 @@ Where:
 - m : number of examples  
 - μ<sub>i</sub> : centroid to which x<sup>i</sup> is currently assigned  
 
+
+# Dimensionality Reduction
+
+1. Reduce number of features to speed up the computation.
+2. Replace highly correlated features with main features.
+3. Visualization of data with lesser features is also easier.
+
+# Principal Components Analysis
+
+This is the most popular dimensionality reduction algorithm.  
+For example, if we want to reduce 2 features to 1 feature, we can do this by drawing a line on the plane of 2 features such that:
+1. Each example creates its projection on this line.
+2. The average distance of these projections on our line is minimum.
+
+The projections on the line then becomes a single-dimensional representation of our 2-feature plane.  
+Similarly, a 3-D feature volume can be represented by 2 features if we consider the projections of those 3-D examples onto a 2-D plane.
+
+Its recommended to do **data scaling** on the inputs before PCA.  
+1. Find mean of all the examples μ (ℝ<sup>n</sup> vector)
+2. Scale each example as: x<sub>j</sub><sup>(i)</sup> = (x<sub>j</sub><sup>(i)</sup> - μ<sub>j</sub>) / s<sub>j</sub>  
+Here 1 < j < n where n is the number of input features.  
+And 1 < i < m  where m is the number of examples.  
+s<sub>j</sub> = range of x<sub>j</sub> (i.e. max<sub>1:m</sub>(x<sub>j</sub>) - min<sub>1:m</sub>(x<sub>j</sub>))
+
+Beyond this, we perform some mathematical transformations to reduce the N features to k features.  
+Those transformations are a bit complex to understand but very easy to do with libraries like Octave.
+
+Once features are reduced, you can tune your algorithm for it and then reconstruct back the answer to original features by doing again some mathematical transformations.
+
+# Anomaly Detection
+
+We draw a model of the input examples and any example that is not within an acceptable range of the model is considered an anomaly.  
+**Gaussian Distribution** is a very well known model that is used to model examples for anomaly detection.  
+Its a bell shaped curve whose equation is:  
+
+p(x) = e<sup>-0.5*((x-μ)/σ)^2</sup>/(σ.sqrt(2π)  
+
+Where μ is the mean of all input examples.  
+And σ<sup>2</sup> is the standard deviation of all examples i.e. σ<sup>2</sup> = (1/m) * ∑<sub>i=1:m</sub>(x<sup>i</sup> - μ)<sup>2</sup>  
+The p(x) calculates the probabilty of `x` **not** being an anomaly.  
+So if p(x) is less than a pre-defined probability ϵ, then that input x is considered anomalous.  
+We calculate μ, σ and p for every feature x<sub>j</sub> and then find p(x) for all features of a new input.  
+If for any feature, p(x) is less than ϵ, then x is anomalous.  
+
+
+# What if the features are not distributed like a Gaussian curve?
+
+We can try to trasnform the non-Gaussian features into Gaussian by applying one of the below transforms:  
+1. log(x)
+2. log(x+1)
+3. log(x+c) where c is some constant
+4. x<sup>1/2</sup>
+5. x<sup>1/3</sup>
+
+# Multivariate Gaussian Distribution
+
+Regular Gaussiana Distribution independently analyzes each feature to see if its anomalous.  
+This is sometimes not desirable and we want to analyze all features together.  
+This can be done by the [Multivariate Gaussian Distribution](http://cs229.stanford.edu/section/gaussians.pdf)
+
