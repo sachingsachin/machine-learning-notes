@@ -77,7 +77,7 @@ C<sub>1</sub> = C<sub>1</sub> - (α Δ)
 Where **α** is a constant called the **step-size** (or the **learning rate**) and determines how fast we converge to our solution.  
 And **Δ** is the slope of J at C<sub>1</sub>
 
-So basically, all we are doing here is subtracting the a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>
+So basically, all we are doing here is subtracting a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>
 The step-size **α** cannot be too high otherwise the convergence will never happen and the gradient descent algorithm will just keep overshooting the minima its planning to achieve. If **α** is too low, then the convergence will happen too slowly, thus wasting computation cycles.
 
 With both C<sub>0</sub> and C<sub>1</sub>, the same thing applies:  
