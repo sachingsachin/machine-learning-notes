@@ -77,7 +77,7 @@ C<sub>1</sub> = C<sub>1</sub> - (α Δ)
 Where **α** is a constant called the **step-size** (or the **learning rate**) and determines how fast we converge to our solution.  
 And **Δ** is the slope of J at C<sub>1</sub>
 
-So basically, all we are doing here is subtracting a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>
+So basically, all we are doing here is subtracting a fraction of J's slope from C<sub>1</sub> to arrive at the next value of C<sub>1</sub>.  
 The step-size **α** cannot be too high otherwise the convergence will never happen and the gradient descent algorithm will just keep overshooting the minima its planning to achieve. If **α** is too low, then the convergence will happen too slowly, thus wasting computation cycles.
 
 With both C<sub>0</sub> and C<sub>1</sub>, the same thing applies:  
@@ -100,9 +100,9 @@ Substituting value of h<sub>i</sub> =
 Δ<sub>j</sub> = ∑<sub>i=1:m</sub>((X<sub>i</sub><sup>T</sup>C - y<sub>i</sub>)\*(x<sub>i,j</sub>))/m  
 
 In the above:  
-X is a m-by-n+1 matrix (m is number of samples, n is number of features),  
-C is a n+1-by-1 matrix and  
-Y is a n+1-by-1 matrix
+X is a (m)<sub>x</sub>(n+1) matrix (m is number of samples, n is number of features),  
+C is a (n+1)<sub>x</sub>(1) matrix and  
+Y is a (n+1)<sub>x</sub>(1) matrix
 
 
 # Matrix Inverse
