@@ -324,6 +324,23 @@ So the transition occurs at 0.5.
 => e<sup>-z</sup> = 1
 => z = 0
 
+Let us also try with z = 5 and z = -5
+
+z=5  
+=> 1 / (1 + e<sup>-1*5</sup>)  
+=> 1 / (1 + e<sup>-5</sup>)  
+=> 1 / (1 + 0.0000xyz)  
+~= 1  
+i.e. the plot saturates to 1 beyond z=5
+
+z=-5
+=> 1 / (1 + e<sup>-1*-5</sup>)  
+=> 1 / (1 + e<sup>5</sup>)  
+=> 1 / (1 + some-large-value)  
+~= 0  
+i.e. the plot saturates to 0 beyond z=-5
+
+
 For the machine learning algorithms, the `z` is replaced by C<sup>T</sup>X.  
 Note that 1 / (1 + e<sup>-z</sup>) is also called the `sigmoid` function and so we can represent the hypothesis `h` as:  
 h(x) = sigmoid(C<sup>T</sup>X)  
