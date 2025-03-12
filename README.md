@@ -23,6 +23,14 @@ In supervised learning, every point in our data-set is complete. It describes ve
 Where as in unsupervised learning, there is no output, only inputs. And its the job of the algorithm to find patterns and structures in that data to group them automatically. An example is to look through a catalog of thousands of images and try to group those images into categories such that similar looking images are grouped together. We only have input here, no proper definition of output is input to the algorithm. The algorithm itself tries to look for patterns for classification.
 
 
+# Reinforcement Learning
+
+In RL, the machine learning algorithm has a reward function (or a cost function) that it tries to maximize (or minimize). With this reward/cost function, the algorithm is able to evaluate its own success and hence is able to fine-tune its parameters accordingly.
+
+Key Differences from Other Machine Learning Paradigms:  
+1. Unlike supervised learning, RL does not have pre-labeled data or explicit instructions. The agent must discover the optimal actions through trial and error.
+2. Unlike unsupervised learning, RL aims to learn a specific behavior (maximizing reward), rather than just discovering patterns in the dat
+
 # Squared Error Function
 
 For "continuous curve" problems, the simplest model is to draw a line such that it is as close to all the points as possible.
