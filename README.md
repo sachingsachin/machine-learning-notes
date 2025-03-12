@@ -29,7 +29,14 @@ In RL, the machine learning algorithm has a reward function (or a cost function)
 
 Key Differences from Other Machine Learning Paradigms:  
 1. Unlike supervised learning, RL does not have pre-labeled data or explicit instructions. The agent must discover the optimal actions through trial and error.
-2. Unlike unsupervised learning, RL aims to learn a specific behavior (maximizing reward), rather than just discovering patterns in the dat
+2. Unlike unsupervised learning, RL aims to learn a specific behavior (maximizing reward), rather than just discovering patterns in the data.
+
+Unlike the other two learning frameworks which work with a static dataset, RL works with a dynamic environment and the goal is not to cluster data or label data, but to find the best sequence of actions that will generate the optimal outcome.
+
+Optimal in this sense means to collect the most reward. It does this by allowing a piece of software called an agent to explore, interact with, and learn from the environment. The agent can take an action which affects the environment, changing its state, and the environment then produces a reward for that action. In using this information, the agent can adjust which action to take in the future. It can learn from this process.
+
+So we can also think of reinforcement learning as a continuous learning which keeps on tuning its model according to latest input/action/reward sequence.
+
 
 # Squared Error Function
 
