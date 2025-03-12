@@ -43,9 +43,6 @@ RL does have its own interesting nuances:
 
 2. `Randomizing`: Another critical aspect of reinforcement learning is the trade-off between exploration and exploitation when interacting with the environment. This is the trade between collecting the most rewards that you already know about versus exploring areas of the environment that you haven't visited yet.
 
-3. 
-
-
 
 
 # Squared Error Function
