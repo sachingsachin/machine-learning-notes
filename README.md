@@ -384,7 +384,7 @@ h(x) = sigmoid(C<sup>T</sup>X)
 # Cost function for Logistic Regression
 
 Next step is to find out a cost function which we will try to minimize so that our chosen `C` best fits the curve.
-We cannot have the same cost function as linear regression because with h(x) = 1 / (1 + e<sup>-z</sup>) with z = C<sup>T</sup>X, the linear regression's cost function tends to be wavy with several local minima. So some other cost function needs to be used.
+We cannot have the same cost function as linear regression because with h(x) = 1 / (1 + e<sup>-z</sup>) and z = C<sup>T</sup>X, the linear regression's cost function tends to be wavy with several local minima. So some other cost function needs to be used.
 
 Consider log(v):
 
