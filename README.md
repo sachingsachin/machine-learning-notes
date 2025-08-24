@@ -66,8 +66,10 @@ So if the known set of values consists of data like [{x<sub>0</sub>, y<sub>0</su
 
 J = ∑<sub>i=1:m</sub>(h(x<sub>i</sub>) - y<sub>i</sub>)<sup>2</sup>/2M
 
+whre M is the number of inputs.
 And the line is considered a best fit when C<sub>0</sub> and C<sub>1</sub> are chosen to provide a minimum value for the above cost function.
 
+The M in the above equation is multiplied by 2 just to make the math a bit more clean because when we take the derivative of the above function, the 2 from the square cancels the 2 in the denominator.
 
 # Contour plots for simplest error function
   
