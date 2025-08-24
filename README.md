@@ -339,9 +339,10 @@ Most simplest form of a classfication problem is the binary one where the outcom
 Like algorithm to predict whether it is dark or not at 6:00 pm with input as day of the year.
 Or algorithm to predict whether a car will have accident or not with input as the speed of the car.
 
-In such algorithms, the outcome has just one of the two values and several data-points are provided for the algorithm for curve-fitting.
-If we apply linear regression to such cases and draw a line or a polynomial, it is very highly probably that the h(x) will have values beyond the two we expect.
-One way is to scale down the output by a suitable factor to limit the range of h(x) but doing so is difficult when the range of h(x) is quite high like -INF to +INF. Secondly, if the inputs for one kind of output are much more than the inputs for other kind of output, then the resulting curve will be more tuned to fit the larger group.
+In such algorithms, the outcome can only take two values and several data-points are provided for the algorithm for curve-fitting.
+But if we apply linear regression to such cases and try to draw a line or a polynomial, it is very highly probably that the resulting h(x) will have values beyond the two we expect.
+
+One way is to scale down the output by a suitable factor is to limit the range of h(x) but doing so is difficult when the range of h(x) is quite high like -INF to +INF. Secondly, if the inputs for one kind of output are much more than the inputs for other kind of output, then the resulting curve will be more tuned to fit the larger group.
 
 To overcome these problems, a new kind of h(x) is proposed for classification type problems.
 This h(x) is called [logistic regression function](https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html) and is of the form:  
