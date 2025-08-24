@@ -33,13 +33,23 @@ Key Differences from Other Machine Learning Paradigms:
 
 Unlike the other two learning frameworks which work with a static dataset, RL works with a dynamic environment and the goal is not to cluster data or label data, but to find the best sequence of actions that will generate the optimal outcome.
 
-Optimal in this sense means to collect the most reward. It does this by allowing a piece of software called an agent to explore, interact with, and learn from the environment. The agent can take an action which affects the environment, changing its state, and the environment then produces a reward for that action. In using this information, the agent can adjust which action to take in the future. It can learn from this process.
+**Key Differences**
+|Aspect |Supervised Learning	|Unsupervised Learning	|Reinforcement Learning|
+|-------|---------------------|-----------------------|----------------------|
+|Data type	|Labeled data (X, y)	|Unlabeled data (X)	States, actions, rewards
+|Feedback	|Direct (correct label)	|None (discover structure)	|Delayed (reward after action)|
+|Objective	|Minimize prediction error	|Find hidden patterns	|Maximize cumulative reward|
+|Example	|Image classification	Customer |clustering	|AlphaGo playing Go|
+
+
+**Reward, Value and Optimization**  
+The goal of a RL agent is to collect the most reward. It does this by allowing the agent to explore, interact with, and learn from the environment. The agent can take an action which affects the environment, changing its state, and the environment then produces a reward for that action. In using this information, the agent can adjust which action to take in the future. It can learn from this process.
 
 So we can also think of reinforcement learning as a continuous learning which keeps on tuning its model according to latest input/action/reward sequence.
 
 RL does have its own interesting nuances:
 
-1. `Value`: Reward is the instantaneous benefit of being in a specific state, whereas value is the total reward that an agent can expect to collect from that state and onwards into the future. Assessing the value of a state rather than assessing the reward helps the agent choose the action that will collect the most reward over time, rather than a short-term benefit. So for an agent tries to maximize value rather than reward, its possible that it takes a few actions with lesser rewards such that overall reward is maximized. However, there is no guarantee that maximizing value will guarantee maximum reward because environment state can change or model's value calculation might not be perfect. `In RL, we can control this by discounting rewards by a larger amount the further they are in the future.`
+1. `Value`: Reward is the instantaneous benefit of being in a specific state, whereas value is the total reward that an agent can expect to collect from that state and onwards into the future. Assessing the value of a state rather than assessing the reward helps the agent choose the action that will collect the most reward over time, rather than a short-term benefit. So when an agent tries to maximize value rather than reward, its possible that it takes a few actions with lesser rewards such that overall reward is maximized. However, there is no guarantee that maximizing value will guarantee maximum reward because environment state can change or model's value calculation might not be perfect. `In RL, we can control this by discounting rewards by a larger amount the further they are in the future.`
 
 2. `Randomizing`: Another critical aspect of reinforcement learning is the trade-off between exploration and exploitation when interacting with the environment. This is the trade between collecting the most rewards that you already know about versus exploring areas of the environment that you haven't visited yet.
 
